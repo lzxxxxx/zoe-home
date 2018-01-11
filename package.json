@@ -1,0 +1,26 @@
+{
+  "name": "zoe-home",
+  "version": "1.0.0",
+  "description": "zoeliu's blog",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack --progress --profile --colors --config webpack.config.pro.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lzxxxxx/zoe-home.git"
+  },
+  "author": "zoeliu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lzxxxxx/zoe-home/issues"
+  },
+  "homepage": "https://github.com/lzxxxxx/zoe-home#readme",
+  "devDependencies": {
+    "clean-webpack-plugin": "^0.1.17",
+    "html-webpack-plugin": "^2.30.1",
+    "path": "^0.12.7",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.10.1"
+  }
+}
