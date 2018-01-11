@@ -21,8 +21,14 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       title: 'index',
-      template: '../template/index.html',
-      minify: true,
+      template: './template/index.html',
+      minify: {
+        removeAttributeQuotes: true,
+        removeComments: true,
+        collapseWhitespace: true,
+        minifyJS: true,
+        minifyCSS: true
+      },
       hash: true
     }),
   ]
