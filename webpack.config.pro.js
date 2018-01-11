@@ -8,9 +8,9 @@ module.exports = {
     bundle: './src/js/app.js',
   },
   output: {
-    path: path.join(__dirname,'public/js'),
+    path: path.join(__dirname,'public'),
     filename: '[name].js',
-    publicPath: './js/'
+    publicPath: '/'
   },
   devtool: "inline-source-map",
   plugins: [

@@ -1,1 +1,1 @@
-alert('start');
+console.log('123');

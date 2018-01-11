@@ -4,12 +4,12 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    bundle: './app.js',
+    bundle: './src/js/app.js',
   },
   output: {
-    path: path.resolve(__dirname,'./dev/js'),
-    filename: './js/[name].js',
-    publicPath: '/js/'
+    path: path.resolve(__dirname,'dev'),
+    filename: '[name].js',
+    publicPath: '/'
   },
   devServer: {
     contentBase: './dev',

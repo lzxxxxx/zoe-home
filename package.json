@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "zoeliu's blog",
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --hot --inline",
     "build": "webpack --progress --profile --colors --config webpack.config.pro.js"
   },
   "repository": {
