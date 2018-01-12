@@ -4,12 +4,37 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    bundle: './src/js/app.js',
+    page1: './src/js/page1.js',
+    page2: './src/js/page2.js',
   },
   output: {
     path: path.resolve(__dirname,'dev'),
     filename: '[name].js',
     publicPath: '/'
+  },
+  module: {//项目中的不同类型的模块如何处理 （import 的）
+    // noParse: 
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['latest','react']
+          }
+        }
+      },
+      {
+        test: /\.scss$/,
+        use: [{
+          loader: 'style-loader'
+        },{
+          loader: 'css-loader'
+        }, {
+          loader: 'sass-loader'
+        }]
+      }
+    ]
   },
   devServer: {
     contentBase: './dev',
@@ -21,13 +46,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: './template/index.html',
-      minify: {
-        removeAttributeQuotes: true,
-        removeComments: true,
-        collapseWhitespace: true,
-        minifyJS: true,
-        minifyCSS: true
-      },
+      minify: false,
       hash: true
     }),
   ],

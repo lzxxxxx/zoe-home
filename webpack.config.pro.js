@@ -12,12 +12,43 @@ module.exports = {
     filename: '[name].js',
     publicPath: '/'
   },
+  module: {
+    // noParse: 
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['latest','react']
+          }
+        }
+      },
+      {
+        test: /\.scss$/,
+        use: [{
+          loader: 'style-loader'
+        },{
+          loader: 'css-loader'
+        }, {
+          loader: 'sass-loader'
+        }]
+      }
+    ]
+  },
   devtool: "inline-source-map",
   plugins: [
     new CleanWebpackPlugin(['public'],{
       root: path.resolve(__dirname, "./public/"),
       verbose: true,
       dry: false
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+        drop_debugger: true,
+        drop_console: true
+      }
     }),
     new HtmlWebpackPlugin({
       title: 'index',
