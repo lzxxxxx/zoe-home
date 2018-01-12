@@ -8,14 +8,14 @@ module.exports = {
     bundle: './src/js/app.js',
   },
   output: {
-    path: path.join(__dirname,'public'),
+    path: path.resolve(__dirname,'public'),
     filename: '[name].js',
     publicPath: '/'
   },
   devtool: "inline-source-map",
   plugins: [
     new CleanWebpackPlugin(['public'],{
-      root: path.join(__dirname, "./public/"),
+      root: path.resolve(__dirname, "./public/"),
       verbose: true,
       dry: false
     }),
