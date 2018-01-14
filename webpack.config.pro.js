@@ -3,9 +3,33 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
-module.exports = {
+
+function buildHtml (){
+  const entry = Config.entry;
+  Object.keys(entry).forEach(ent=>{
+    if (typeof Config.entry[ent] == 'object') return ;
+    let item = new HtmlWebpackPlugin({
+        filename: `${ent}.html`,
+        template: './template/index.html',
+        chunks: [`${ent}`,'chunk'],//和 entry 部分的 key 一致
+        minify: {
+          removeAttributeQuotes: true,
+          removeComments: true,
+          collapseWhitespace: true,
+          minifyJS: true,
+          minifyCSS: true
+        },
+        hash: true
+      });
+    Config.plugins.push(item);
+  });
+  console.log(Config.plugins);
+}
+
+const Config = {
   entry: {
-    bundle: './src/js/app.js',
+    page1: './src/js/page1.js',
+    page2: './src/js/page2.js',
   },
   output: {
     path: path.resolve(__dirname,'public'),
@@ -50,17 +74,17 @@ module.exports = {
         drop_console: true
       }
     }),
-    new HtmlWebpackPlugin({
-      title: 'index',
-      template: './template/index.html',
-      minify: {
-        removeAttributeQuotes: true,
-        removeComments: true,
-        collapseWhitespace: true,
-        minifyJS: true,
-        minifyCSS: true
-      },
-      hash: true
-    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: ["chunk"],
+      // ( 公共chunk(commnons chunk) 的名称)
+      minChunks: 2,
+      // (模块必须被2个 入口chunk 共享)
+      chunks: ["page1", "page2"],
+      // (只使用这些 入口chunk)
+    })
   ]
 };
+
+buildHtml();
+
+module.exports = Config;
