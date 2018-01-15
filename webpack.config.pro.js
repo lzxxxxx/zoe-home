@@ -23,7 +23,6 @@ function buildHtml (){
       });
     Config.plugins.push(item);
   });
-  console.log(Config.plugins);
 }
 
 const Config = {
@@ -36,6 +35,11 @@ const Config = {
     filename: '[name].js',
     publicPath: '/'
   },
+  resolve: {
+    modules: [//优化解析
+      path.resolve(__dirname,"node_modules")
+    ]
+  },
   module: {
     // noParse: 
     rules: [
@@ -46,7 +50,8 @@ const Config = {
           options: {
             presets: ['latest','react']
           }
-        }
+        },
+        include: path.resolve(__dirname,"src")
       },
       {
         test: /\.scss$/,

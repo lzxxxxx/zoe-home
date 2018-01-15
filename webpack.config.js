@@ -27,6 +27,11 @@ const Config = {
     filename: '[name].js',
     publicPath: '/'
   },
+  resolve: {
+    modules: [//优化解析
+      path.resolve(__dirname,"node_modules")
+    ]
+  },
   module: {//项目中的不同类型的模块如何处理 （import 的）
     // noParse: 
     rules: [
@@ -35,9 +40,10 @@ const Config = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['latest','react']
+            presets: ['latest','react'],
           }
-        }
+        },
+        include: path.resolve(__dirname,"src")
       },
       {
         test: /\.scss$/,
