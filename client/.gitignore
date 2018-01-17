@@ -1,0 +1,21 @@
+*.swp
+cache
+createapidoc.sh
+apidoc.json
+.idea
+log
+.project
+var
+config/scm_config.php
+.settings
+node_modules/
+nohup.out
+bower_components
+.DS_Store
+._.DS_Store
+._*
+.php_cs.cache
+npm-debug
+bdlog
+bdlog.wf
+# dev
