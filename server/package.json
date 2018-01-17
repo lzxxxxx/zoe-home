@@ -1,0 +1,17 @@
+{
+  "name": "zoe-server",
+  "version": "1.0.0",
+  "description": "zoeliu's server",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "koa": "^2.4.1",
+    "koa-body": "^2.5.0",
+    "koa-compose": "^4.0.0",
+    "koa-route": "^3.2.0",
+    "koa-static": "^4.0.2",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
+  "author": "zoeliu",
+  "license": "ISC"
+}
