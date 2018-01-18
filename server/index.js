@@ -6,7 +6,6 @@ const serve = require('koa-static');
 const route = require('koa-route');
 
 const mainHtml = (ctx, next) => {
-  console.log('=======in html');
   ctx.response.type = 'html';
   ctx.response.body = fs.createReadStream(path.resolve(__dirname,'../client/public/page1.html'));
 }
