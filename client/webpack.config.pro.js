@@ -32,7 +32,7 @@ const Config = {
   },
   output: {
     path: path.resolve(__dirname,'public'),
-    filename: '[name].js',
+    filename: 'resource/[name].js',
     publicPath: '/'
   },
   resolve: {
