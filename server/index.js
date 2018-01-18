@@ -15,7 +15,7 @@ const mainResource = serve(path.resolve(__dirname, '../client/public/'));
 
 app.use(route.get('/',mainHtml));
 app.use(mainResource);
-app.listen(80);
+app.listen(8889);
 
 // 工作任务：
 // 1.海外产品站的迁移，海外活动的开发
