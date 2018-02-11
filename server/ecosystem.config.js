@@ -22,7 +22,6 @@ module.exports = {
       name      : 'WEB',
       script    : 'index.js',
       max_memory_restart: "300M",
-      script    : "/root/nova/app.js",//?
       instances  : 4,
       exec_mode  : "cluster",
       watch: true,
