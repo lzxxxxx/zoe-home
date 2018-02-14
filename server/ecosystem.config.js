@@ -35,16 +35,16 @@ module.exports = {
    * Deployment section
    * http://pm2.keymetrics.io/docs/usage/deployment/
    */
-  // deploy : {
-  //   // "production" is the environment name
-  //   production : {
-  //     user : 'root',
-  //     host : '39.106.177.59',
-  //     ref  : 'origin/master',
-  //     repo : 'git@github.com:lzxxxxx/zoe-home.git',
-  //     path : '放到服务器的某个目录，注意需要赋予读写权限777',
-  //     ssh_options: "StrictHostKeyChecking=no",
-  //     'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production'
-  //   },
-  // }
+  deploy : {
+    // "production" is the environment name
+    production : {
+      user : 'root',
+      host : '39.106.177.59',
+      ref  : 'origin/master',
+      repo : 'git@github.com:lzxxxxx/zoe-home.git',
+      path : '/usr/local/src',
+      ssh_options: "StrictHostKeyChecking=no",
+      'post-deploy' : 'cd server && npm install && pm2 reload ecosystem.config.js --env production'
+    },
+  }
 };
