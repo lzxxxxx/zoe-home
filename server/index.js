@@ -21,9 +21,9 @@ const addBlog = function (ctx,next){
   };
 
   let blog = new BlogModel(newBlog);
-  blog.save(err=>{
+  blog.save((err,data)=>{
     ctx.response.type = "text/plain";
-    ctx.response.body = '存储成功！请尝试请求 getBlog 查看返回结果'
+    ctx.response.body = `${err} `
   })
   // return blog.save().then(blog=>{
   //   ctx.response.type = "text/plain";
