@@ -18,26 +18,20 @@ const addBlog = async function (ctx,next){
     desc: 'desc1',
     content: 'content1'
   };
-  console.log('000');
-
   let blog = new BlogModel(newBlog);
-  console.log('111');
-  let pro= blog.save().exec();
-  console.log('222',pro);
-
-  let res = await BlogModel.findOne({}).exec();
-  console.log('333');
+  blog.pre("save", function(next) {
+    if(!this.trial){
+      //do your job here
+      ctx.response.type = "text/plain";
+      ctx.response.body = "err"
+      next();
+    }
+  });
+  await blog.save();
+  await BlogModel.findOne();
 
   ctx.response.type = "text/plain";
   ctx.response.body = "err"
-
-  // blog.save((err,data)=>{
-  //   console.log(err);
-  //   console.log(data);
-  //   ctx.response.type = "text/plain";
-  //   ctx.response.body = "err"
-  //   // err ? ctx.response.body = 'err' : ctx.response.body = 'data'
-  // })
 }
 
 const getBlog = function (ctx,next){
