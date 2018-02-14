@@ -19,15 +19,10 @@ const addBlog = async function (ctx,next){
     content: 'content1'
   };
   let blog = new BlogModel(newBlog);
-  blog.pre("save", function(next) {
-    if(!this.trial){
-      //do your job here
-      ctx.response.type = "text/plain";
-      ctx.response.body = "err"
-      next();
-    }
+  await blog.save(function(err){
+    "use strict";
+    console.log(err);
   });
-  await blog.save();
   await BlogModel.findOne();
 
   ctx.response.type = "text/plain";
