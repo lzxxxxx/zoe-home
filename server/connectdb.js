@@ -24,7 +24,7 @@ mongoose.connection.once('open', function() {
   // return server.start();
 });
 
-return mongoose.connect(url, {}, function(err) {
+return mongoose.createConnection(url, {}, function(err) {
   if (err) {
     console.log('connect err-----',err);
     // logger.error('MongoDB connection error: ' + err);
