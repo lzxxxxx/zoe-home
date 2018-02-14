@@ -19,7 +19,7 @@ const addBlog = async function (ctx,next){
     content: 'content1'
   };
   let blog = new BlogModel(newBlog);
-  await blog.save(function(err){
+  await blog.$__save(function(err){
     "use strict";
     console.log(err);
   });
