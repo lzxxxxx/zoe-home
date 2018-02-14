@@ -25,12 +25,12 @@ const addBlog = async function (ctx,next){
   });
   Promise.all([pro]).then( function(){
     "use strict";
-    console.log('fsfsdasdfass======');
+    ctx.response.type = "text/plain";
+    ctx.response.body = "err"
   })
   await BlogModel.findOne();
 
-  ctx.response.type = "text/plain";
-  ctx.response.body = "err"
+
 }
 
 const getBlog = function (ctx,next){
