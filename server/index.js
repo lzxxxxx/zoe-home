@@ -21,13 +21,13 @@ const addBlog = function* (ctx,next){
   };
 
   let blog = new BlogModel(newBlog);
-  yield blog.save();
+  // yield blog.save();
   ctx.response.type = "text/plain";
   ctx.response.body = '存储成功！请尝试请求 getBlog 查看返回结果'
 }
 
 const getBlog = function* (ctx, next){
-  let res = yield BlogModel.find();
+  // let res = yield BlogModel.find();
   console.log('111111',res);
   ctx.response.type = 'json';
   // ctx.response.body = yield (BlogModel.find());
