@@ -7,12 +7,13 @@ const route = require('koa-route');
 const BlogModel = require('./models/blog');
 
 var mongo = require('mongoose');
-var connection = mongo.connect('mongodb://127.0.0.1/zoehome');
+var connection = mongo.createConnection('mongodb://127.0.0.1/zoehome');
+
 
 
 var Schema = mongo.Schema;
 var BookSchema = new Schema({ title : {type : String, index : {unique : true}}});
-var BookModel = connection.model('abook', BookSchema);
+var BookModel = mongo.model('abook', BookSchema);
 var b = new BookModel({title : 'aaaaaa'});
 
 const mainHtml = (ctx, next) => {
