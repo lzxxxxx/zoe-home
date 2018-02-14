@@ -21,7 +21,7 @@ const addBlog = function (ctx,next){
   };
 
   let blog = new BlogModel(newBlog);
-  blog.save({},blog=>{
+  blog.save(err=>{
     ctx.response.type = "text/plain";
     ctx.response.body = '存储成功！请尝试请求 getBlog 查看返回结果'
   })
@@ -32,7 +32,7 @@ const addBlog = function (ctx,next){
 }
 
 const getBlog = function (ctx,next){
-    return BlogModel.find({},blog=>{
+    BlogModel.find({content:'content1'},blog=>{
       ctx.response.type = 'json';
       // ctx.response.body = yield (BlogModel.find());
       ctx.response.body = '读取成功！';
