@@ -32,7 +32,10 @@ const addBlog = function (ctx,next){
 }
 
 const getBlog = function (ctx,next){
-    BlogModel.find({content:'content1'},blog=>{
+    BlogModel.find({content:'345'},(err,blog)=>{
+      if(err){
+        console.log('get er',err)
+      }
       ctx.response.type = 'json';
       // ctx.response.body = yield (BlogModel.find());
       ctx.response.body = '读取成功！';
