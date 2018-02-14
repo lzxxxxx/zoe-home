@@ -6,6 +6,8 @@ const serve = require('koa-static');
 const route = require('koa-route');
 const BlogModel = require('./models/blog.js');
 
+console.log('111111',BlogModel);
+
 const mainHtml = (ctx, next) => {
   ctx.response.type = 'html';
   ctx.response.body = fs.createReadStream(path.resolve(__dirname,'../client/public/page1.html'));
@@ -18,7 +20,6 @@ const addBlog = (ctx, next)=>{//请求一次存一次
     desc: 'desc1',
     content: 'content1'
   };
-  console.log('11111',newBlog);
   yield new BlogModel(newBlog).save();
   ctx.response.type = "text/plain";
   ctx.response.body = '存储成功！请尝试请求 getBlog 查看返回结果'

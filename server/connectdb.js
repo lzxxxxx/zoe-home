@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 //var uri = 'mongodb://username:password@hostname:port/databasename';
 const url = 'mongodb://localhost:27017/test';
 mongoose.connection.once('open', function() {
-  console.log('open======');
+  console.log('open======!!');
 
   mongoose.connection.on('connected', function() {
     console.log('connected======');
