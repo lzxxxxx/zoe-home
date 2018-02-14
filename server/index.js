@@ -19,28 +19,18 @@ const addBlog = async function (ctx,next){
     content: 'content1'
   };
   let blog = new BlogModel(newBlog);
-  let pro = blog.save(function(err){
+  blog.save((err,data)=>{
     "use strict";
-    console.log(err);
-  });
-  Promise.all([pro]).then( function(){
-    "use strict";
-    console.log('fsfsdasdfass======');
+    console.log('123');
     ctx.response.type = "text/plain";
-    ctx.response.body = "err"
-  })
-  // await BlogModel.findOne();
-
+    ctx.response.body = "err";
+  });
 }
 
 const getBlog = function (ctx,next){
     BlogModel.find((err,blog)=>{
-      console.log(err);
-      console.log(blog);
       ctx.response.type = "text/plain";
       ctx.response.body = "err";
-      // ctx.response.body = yield (BlogModel.find());
-      // err ? ctx.response.body = 'err' : ctx.response.body = 'blog'
     })
 }
 
