@@ -25,7 +25,7 @@ const addBlog = (ctx, next)=>{//请求一次存一次
 }
 const getBlog = (ctx, next)=>{
   ctx.response.type = 'json';
-  ctx.response.body = yield BlogModel.find();
+  ctx.response.body = yield (BlogModel.find());
 }
 
 const mainResource = serve(path.resolve(__dirname, '../client/public/'));
