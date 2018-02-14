@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const serve = require('koa-static');
 const route = require('koa-route');
-const BlogModel = require('./models/blog');
+const BlogModel = require('./models/connectdb');
 
 const mainHtml = (ctx, next) => {
   ctx.response.type = 'html';
