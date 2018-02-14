@@ -22,16 +22,14 @@ const addBlog = async function (ctx,next){
 
   let blog = new BlogModel(newBlog);
   console.log('111');
-  let pro= blog.save();
+  let pro= blog.save().exec();
   console.log('222',pro);
 
-  let res = await BlogModel.findOne();
+  let res = await BlogModel.findOne({}).exec();
   console.log('333');
 
   ctx.response.type = "text/plain";
   ctx.response.body = "err"
-
-  console.log('======',res);
 
   // blog.save((err,data)=>{
   //   console.log(err);
