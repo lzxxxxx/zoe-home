@@ -5,7 +5,6 @@ const path = require('path');
 const serve = require('koa-static');
 const route = require('koa-route');
 const BlogModel = require('./models/blog');
-// const BlogModel = mongoose.model('Blog');
 
 const mainHtml = (ctx, next) => {
   ctx.response.type = 'html';
@@ -22,6 +21,7 @@ const addBlog = function (ctx,next){
 
   let blog = new BlogModel(newBlog);
   blog.save((err,data)=>{
+    console.log(err);
     ctx.response.type = "text/plain";
     ctx.response.body = "err"
     // err ? ctx.response.body = 'err' : ctx.response.body = 'data'
@@ -30,6 +30,7 @@ const addBlog = function (ctx,next){
 
 const getBlog = function (ctx,next){
     BlogModel.find((err,blog)=>{
+      console.log(err);
       ctx.response.type = "text/plain";
       ctx.response.body = "err";
       // ctx.response.body = yield (BlogModel.find());
