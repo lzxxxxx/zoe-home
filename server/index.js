@@ -18,6 +18,7 @@ const addBlog = (ctx, next)=>{//请求一次存一次
     desc: 'desc1',
     content: 'content1'
   };
+  console.log('11111',newBlog);
   yield new BlogModel(newBlog).save();
   ctx.response.type = "text/plain";
   ctx.response.body = '存储成功！请尝试请求 getBlog 查看返回结果'
