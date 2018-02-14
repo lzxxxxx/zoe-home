@@ -21,18 +21,18 @@ const addBlog = function (ctx,next){
   };
 
   let blog = new BlogModel(newBlog);
-  return blog.save().then(blog=>{
+  // return blog.save().then(blog=>{
     ctx.response.type = "text/plain";
     ctx.response.body = '存储成功！请尝试请求 getBlog 查看返回结果'
-  });
+  // });
 }
 
 const getBlog = function (ctx,next){
-  return BlogModel.find().then(blog=>{
+  // return BlogModel.find().then(blog=>{
     ctx.response.type = 'json';
     // ctx.response.body = yield (BlogModel.find());
     ctx.response.body = '读取成功！';
-  });
+  // });
 }
 
 const mainResource = serve(path.resolve(__dirname, '../client/public/'));
