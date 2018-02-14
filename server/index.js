@@ -31,6 +31,7 @@ const mainResource = serve(path.resolve(__dirname, '../client/public/'));
 
 app.use(route.get('/',mainHtml));
 app.use(route.get('/addBlog',addBlog));
+app.use(route.get('/getBlog',getBlog));
 
 app.use(mainResource);
 app.listen(9999,'0.0.0.0');
