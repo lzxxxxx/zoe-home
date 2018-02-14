@@ -14,7 +14,7 @@ const mainHtml = (ctx, next) => {
 
 const addBlog = function (ctx,next){
   let newBlog = {
-    time: Date.now,
+    time: Date.now(),
     title: 'title1',
     desc: 'desc1',
     content: 'content1'
@@ -33,12 +33,9 @@ const addBlog = function (ctx,next){
 
 const getBlog = function (ctx,next){
     BlogModel.find((err,blog)=>{
-      if(err){
-        console.log('get er',err)
-      }
-      ctx.response.type = 'json';
+      ctx.response.type = 'text/plain';
       // ctx.response.body = yield (BlogModel.find());
-      ctx.response.body = '读取成功！';
+      ctx.response.body = `${err}----${blog}`;
       })
   // return BlogModel.find().then(blog=>{
   //   ctx.response.type = 'json';
