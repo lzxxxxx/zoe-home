@@ -32,7 +32,7 @@ const addBlog = function (ctx,next){
 }
 
 const getBlog = function (ctx,next){
-    BlogModel.find({content:'345'},(err,blog)=>{
+    BlogModel.find((err,blog)=>{
       if(err){
         console.log('get er',err)
       }

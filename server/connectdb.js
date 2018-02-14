@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 //var uri = 'mongodb://username:password@hostname:port/databasename';
-const url = 'mongodb://localhost:27017/test';
+const url = 'mongodb://localhost:27017/zoehome';
 mongoose.connection.once('open', function() {
   console.log('open======!!');
 
