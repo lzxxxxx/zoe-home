@@ -18,10 +18,16 @@ const addBlog = async function (ctx,next){
     desc: 'desc1',
     content: 'content1'
   };
+  console.log('000');
 
   let blog = new BlogModel(newBlog);
+  console.log('111');
   await blog.save();
+  console.log('222');
+
   let res = await BlogModel.find();
+  console.log('333');
+
   ctx.response.type = "text/plain";
   ctx.response.body = "err"
 
