@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const serve = require('koa-static');
 const route = require('koa-route');
-const BlogModel = require('./models/connectdb');
+const BlogModel = require('./models/blog');
 
 var mongo = require('mongoose');
 var connection = mongo.connect('mongodb://127.0.0.1/test');
