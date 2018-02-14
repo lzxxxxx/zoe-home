@@ -25,6 +25,8 @@ const addBlog = async function (ctx,next){
     ctx.response.type = "text/plain";
     ctx.response.body = "err";
   });
+  ctx.response.type = "text/plain";
+  ctx.response.body = "err";
 }
 
 const getBlog = function (ctx,next){
