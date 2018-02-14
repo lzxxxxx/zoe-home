@@ -22,16 +22,16 @@ const addBlog = function (ctx,next){
 
   let blog = new BlogModel(newBlog);
   return blog.save().then(blog=>{
-    this.type = "text/plain";
-    this.body = '存储成功！请尝试请求 getBlog 查看返回结果'
+    ctx.response.type = "text/plain";
+    ctx.response.body = '存储成功！请尝试请求 getBlog 查看返回结果'
   });
 }
 
 const getBlog = function (ctx,next){
-  BlogModel.find().then(blog=>{
-    this.type = 'json';
+  return BlogModel.find().then(blog=>{
+    ctx.response.type = 'json';
     // ctx.response.body = yield (BlogModel.find());
-    this.body = '读取成功！';
+    ctx.response.body = '读取成功！';
   });
 }
 
