@@ -4,8 +4,8 @@ const fs = require('fs');
 const path = require('path');
 const serve = require('koa-static');
 const route = require('koa-route');
-// const BlogModel = require('./models/blog');
-const BlogModel = mongoose.model('Blog');
+const BlogModel = require('./models/blog');
+// const BlogModel = mongoose.model('Blog');
 
 const mainHtml = (ctx, next) => {
   ctx.response.type = 'html';
@@ -19,7 +19,7 @@ const addBlog = (ctx, next)=>{//请求一次存一次
     desc: 'desc1',
     content: 'content1'
   };
-  yield new BlogModel(newBlog).save();
+  let res = yield new BlogModel(newBlog).save();
   ctx.response.type = "text/plain";
   ctx.response.body = '存储成功！请尝试请求 getBlog 查看返回结果'
 }
