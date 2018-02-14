@@ -23,7 +23,7 @@ const addBlog = function (ctx,next){
   let blog = new BlogModel(newBlog);
   blog.save((err,data)=>{
     ctx.response.type = "text/plain";
-    err ? ctx.response.body = `${err} ` : ctx.response.body = `${data} `
+    err ? ctx.response.body = 'err' : ctx.response.body = 'data'
   })
   // return blog.save().then(blog=>{
   //   ctx.response.type = "text/plain";
@@ -35,7 +35,7 @@ const getBlog = function (ctx,next){
     BlogModel.find((err,blog)=>{
       ctx.response.type = 'text/plain';
       // ctx.response.body = yield (BlogModel.find());
-      err ? ctx.response.body = `${err} ` : ctx.response.body = `${blog} `
+      err ? ctx.response.body = 'err' : ctx.response.body = 'blog'
       })
   // return BlogModel.find().then(blog=>{
   //   ctx.response.type = 'json';
