@@ -12,7 +12,7 @@ const mainHtml = (ctx, next) => {
   ctx.response.body = fs.createReadStream(path.resolve(__dirname,'../client/public/page1.html'));
 }
 
-const addBlog = (ctx, next)=>{//请求一次存一次
+const addBlog = function* (ctx,next){
   let newBlog = {
     time: Date.now,
     title: 'title1',
@@ -21,16 +21,17 @@ const addBlog = (ctx, next)=>{//请求一次存一次
   };
 
   let blog = new BlogModel(newBlog);
-  blog.save();
+  yield blog.save();
   ctx.response.type = "text/plain";
   ctx.response.body = '存储成功！请尝试请求 getBlog 查看返回结果'
 }
-const getBlog = (ctx, next)=>{
-  BlogModel.find((err, blogs)=>{
-    ctx.response.type = 'json';
-    // ctx.response.body = yield (BlogModel.find());
-    ctx.response.body = '读取成功！';
-  });
+
+const getBlog = function* (ctx, next){
+  let res = yield BlogModel.find();
+  console.log('111111',res);
+  ctx.response.type = 'json';
+  // ctx.response.body = yield (BlogModel.find());
+  ctx.response.body = '读取成功！';
 
 }
 
