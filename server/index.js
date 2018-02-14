@@ -7,13 +7,11 @@ const route = require('koa-route');
 const BlogModel = require('./models/blog');
 
 const mainHtml = (ctx, next) => {
-  console.log('mainmian');
   ctx.response.type = 'html';
   ctx.response.body = fs.createReadStream(path.resolve(__dirname,'../client/public/page1.html'));
 }
 
 const addBlog = function (ctx,next){
-  console.log('inininfasdfa');
   let newBlog = {
     time: Date.now(),
     title: 'title1',
@@ -22,6 +20,7 @@ const addBlog = function (ctx,next){
   };
 
   let blog = new BlogModel(newBlog);
+  console.log('fsafasd',blog.save);
   blog.save((err,data)=>{
     console.log(err);
     console.log(data);
@@ -32,7 +31,7 @@ const addBlog = function (ctx,next){
 }
 
 const getBlog = function (ctx,next){
-  console.log('ininin');
+  console.log('fsafasd',BlogModel.find);
     BlogModel.find((err,blog)=>{
       console.log(err);
       console.log(blog);
