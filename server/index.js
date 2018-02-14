@@ -19,13 +19,14 @@ const addBlog = (ctx, next)=>{//请求一次存一次
     desc: 'desc1',
     content: 'content1'
   };
-  yield (new BlogModel(newBlog).save());
+  // yield (new BlogModel(newBlog).save());
   ctx.response.type = "text/plain";
   ctx.response.body = '存储成功！请尝试请求 getBlog 查看返回结果'
 }
 const getBlog = (ctx, next)=>{
   ctx.response.type = 'json';
-  ctx.response.body = yield (BlogModel.find());
+  // ctx.response.body = yield (BlogModel.find());
+  ctx.response.body = '读取成功！';
 }
 
 const mainResource = serve(path.resolve(__dirname, '../client/public/'));
