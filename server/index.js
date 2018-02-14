@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const serve = require('koa-static');
 const route = require('koa-route');
-const BlogModel = require('./models/blog.js');
+const BlogModel = require('./models/blog');
 
 console.log('111111',BlogModel);
 
