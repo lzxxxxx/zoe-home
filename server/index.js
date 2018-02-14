@@ -11,7 +11,7 @@ const mainHtml = (ctx, next) => {
   ctx.response.body = fs.createReadStream(path.resolve(__dirname,'../client/public/page1.html'));
 }
 
-const addBlog = function (ctx,next){
+const addBlog = async function (ctx,next){
   let newBlog = {
     time: Date.now(),
     title: 'title1',
@@ -20,18 +20,23 @@ const addBlog = function (ctx,next){
   };
 
   let blog = new BlogModel(newBlog);
-  console.log('fsafasd',blog.save);
-  blog.save((err,data)=>{
-    console.log(err);
-    console.log(data);
-    ctx.response.type = "text/plain";
-    ctx.response.body = "err"
-    // err ? ctx.response.body = 'err' : ctx.response.body = 'data'
-  })
+  await blog.save();
+  let res = await BlogModel.find();
+  ctx.response.type = "text/plain";
+  ctx.response.body = "err"
+
+  console.log('======',res);
+
+  // blog.save((err,data)=>{
+  //   console.log(err);
+  //   console.log(data);
+  //   ctx.response.type = "text/plain";
+  //   ctx.response.body = "err"
+  //   // err ? ctx.response.body = 'err' : ctx.response.body = 'data'
+  // })
 }
 
 const getBlog = function (ctx,next){
-  console.log('fsafasd',BlogModel.find);
     BlogModel.find((err,blog)=>{
       console.log(err);
       console.log(blog);
@@ -39,7 +44,7 @@ const getBlog = function (ctx,next){
       ctx.response.body = "err";
       // ctx.response.body = yield (BlogModel.find());
       // err ? ctx.response.body = 'err' : ctx.response.body = 'blog'
-      })
+    })
 }
 
 const mainResource = serve(path.resolve(__dirname, '../client/public/'));
