@@ -11,7 +11,8 @@ const mainHtml = (ctx, next) => {
   ctx.response.body = fs.createReadStream(path.resolve(__dirname,'../client/public/page1.html'));
 }
 
-const addBlog = function* (ctx,next){
+const addBlog = function* (){
+  console.log(`${this.body} get body`);
   let newBlog = {
     time: Date.now(),
     title: 'title1',
@@ -19,10 +20,11 @@ const addBlog = function* (ctx,next){
     content: 'content1'
   };
   let blog = new BlogModel(newBlog);
+  console.log('before yield');
   let data = yield blog.save();
   console.log('getdata',data);
-  ctx.response.type = "text/plain";
-  ctx.response.body = "err";
+  this.type = "text/plain";
+  this.body = "err";
 }
 
 const getBlog = function (ctx,next){
