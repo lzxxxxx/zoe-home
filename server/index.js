@@ -6,32 +6,24 @@ const serve = require('koa-static');
 const route = require('koa-route');
 const BlogModel = require('./models/blog');
 
-var mongo = require('mongoose');
-var connection = mongo.createConnection('mongodb://127.0.0.1/zoehome');
-
-
-
-var Schema = mongo.Schema;
-var BookSchema = new Schema({ title : {type : String, index : {unique : true}}});
-var BookModel = mongo.model('abook', BookSchema);
-var b = new BookModel({title : 'aaaaaa'});
-
 const mainHtml = (ctx, next) => {
   ctx.response.type = 'html';
   ctx.response.body = fs.createReadStream(path.resolve(__dirname,'../client/public/page1.html'));
 }
 
 const addBlog = async function (ctx,next){
-  b.save( function(e,data){
-    if(e){
-      ctx.response.type = "text/plain";
-      ctx.response.body = "err";
-      console.log('error')
-    }else{
-      console.log('no error')
-      ctx.response.type = "text/plain";
-      ctx.response.body = "no err";
-    }});
+  let newBlog = {
+    time: Date.now(),
+    title: 'title1',
+    desc: 'desc1',
+    content: 'content1'
+  };
+  let blog = new BlogModel(newBlog);
+  blog.save((err,data)=>{
+    "use strict";
+    ctx.response.type = "text/plain";
+    ctx.response.body = "err";
+  });
 }
 
 const getBlog = function (ctx,next){
