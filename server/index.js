@@ -19,18 +19,29 @@ const addBlog = async function (ctx,next){
     content: 'content1'
   };
   let blog = new BlogModel(newBlog);
-  blog.save((err,data)=>{
-    "use strict";
-    ctx.response.type = "text/plain";
-    ctx.response.body = "err";
-  });
+  let pro = new Promise((res,rej)=>{
+    setTimeout(()=>{
+      res();
+    },2000)
+
+    pro.then((res)=>{
+      ctx.response.type = "text/plain";
+      ctx.response.body = "err";
+    });
+  })
+  // blog.save((err,data)=>{
+  //   console.log('in save');
+  //   ctx.response.type = "text/plain";
+  //   ctx.response.body = "err";
+  // });
 }
 
 const getBlog = function (ctx,next){
-    BlogModel.find((err,blog)=>{
-      ctx.response.type = "text/plain";
-      ctx.response.body = "err";
-    })
+    // BlogModel.find((err,blog)=>{
+    //   console.log('in find');
+    //   ctx.response.type = "text/plain";
+    //   ctx.response.body = "err";
+    // })
 }
 
 const mainResource = serve(path.resolve(__dirname, '../client/public/'));
