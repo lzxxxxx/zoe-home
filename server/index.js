@@ -23,12 +23,11 @@ const addBlog = async function (ctx,next){
     setTimeout(()=>{
       res();
     },2000)
-
-    pro.then((res)=>{
-      ctx.response.type = "text/plain";
-      ctx.response.body = "err";
-    });
   })
+  pro.then((res)=>{
+    ctx.response.type = "text/plain";
+    ctx.response.body = "err";
+  });
   // blog.save((err,data)=>{
   //   console.log('in save');
   //   ctx.response.type = "text/plain";
