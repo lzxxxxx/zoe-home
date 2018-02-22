@@ -12,7 +12,7 @@ const mainHtml = (ctx, next) => {
 }
 
 const addBlog = function* (){
-  console.log(`${this.body} get body`);
+  // console.log(`${this.body} get body`);
   let newBlog = {
     time: Date.now(),
     title: 'title1',
