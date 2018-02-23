@@ -12,8 +12,7 @@ const mainHtml = (ctx, next) => {
   ctx.response.body = fs.createReadStream(path.resolve(__dirname,'../client/public/page1.html'));
 }
 
-const addBlog = async function (ctx, next){
-  console.log('inadd');
+const addBlog = function (ctx, next){
   let newBlog = {
     time: Date.now(),
     title: 'title1',
@@ -21,14 +20,17 @@ const addBlog = async function (ctx, next){
     content: 'content1'
   };
   let blog = new BlogModel(newBlog);
-  let data = await blog.save();
-  console.log('getdata',data);
-  this.type = "text/plain";
-  this.body = "err";
+  console.log('===save',blog.save());
+  return blog.save().then(function(){
+    ctx.response.type = "text/plain";
+    ctx.response.body = "err";
+    next();
+  })
 }
 
-const getBlog = async function (ctx,next){
-    await BlogModel.find((err,blog)=>{
+const getBlog = function (ctx,next){
+    console.log('===find',BlogModel.find());  
+    return BlogModel.find((err,blog)=>{
       console.log('in find');
       ctx.response.type = "text/plain";
       ctx.response.body = "err";
