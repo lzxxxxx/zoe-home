@@ -20,7 +20,7 @@ const addBlog = function (ctx, next){
     content: 'content1'
   };
   let blog = new BlogModel(newBlog);
-  blog.save().then(function(){
+  return blog.save().then(function(){
     ctx.response.type = "text/plain";
     ctx.response.body = "err";
     next();
