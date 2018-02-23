@@ -33,7 +33,7 @@ const getBlog = function (ctx,next){
     return BlogModel.find((err,blog)=>{
       console.log('in find');
       ctx.response.type = "text/plain";
-      ctx.response.body = "err";
+      ctx.response.body = "err get";
     })
 }
 
