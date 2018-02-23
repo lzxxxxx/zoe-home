@@ -42,8 +42,7 @@ const addBlog = async function (ctx, next){
 }
 
 const getBlog = async function (ctx, next){
-  ctx.body = await BlogModel.find().exec();
-  await next();
+  ctx.body = await BlogModel.save();
 }
 
 const mainResource = serve(path.resolve(__dirname, '../client/public/'));
