@@ -42,7 +42,14 @@ const addBlog = async function (ctx, next){
 }
 
 const getBlog = async function (ctx, next){
-  ctx.body = await BlogModel.save();
+  let newBlog = {
+    time: Date.now(),
+    title: 'title1',
+    desc: 'desc1',
+    content: 'content1'
+  };
+  let blog = new BlogModel(newBlog);
+  ctx.body = await blog.save();
 }
 
 const mainResource = serve(path.resolve(__dirname, '../client/public/'));
