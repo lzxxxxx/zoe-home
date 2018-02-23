@@ -12,21 +12,27 @@ const mainHtml = (ctx, next) => {
   ctx.response.body = fs.createReadStream(path.resolve(__dirname,'../client/public/page1.html'));
 }
 
-const addBlog = function (ctx, next){
-  let newBlog = {
-    time: Date.now(),
-    title: 'title1',
-    desc: 'desc1',
-    content: 'content1'
-  };
-  let blog = new BlogModel(newBlog);
-  console.log('dfadfasdf',blog.save());
-  return blog.save().then(function(err,data){
-    console.log(data);
-    ctx.response.type = "text/plain";
-    ctx.response.body = "err addblog";
-    next();
-  })
+// const addBlog = function (ctx, next){
+//   let newBlog = {
+//     time: Date.now(),
+//     title: 'title1',
+//     desc: 'desc1',
+//     content: 'content1'
+//   };
+//   let blog = new BlogModel(newBlog);
+//   console.log('dfadfasdf',blog.save());
+//   return blog.save().then(function(err,data){
+//     console.log(data);
+//     ctx.response.type = "text/plain";
+//     ctx.response.body = "err addblog";
+//     next();
+//   })
+// }
+
+const addBlog = function *(next) {
+  var blog = yield BlogModel.find();
+  console.log('after yield');
+  this.body = blog;
 }
 
 const getBlog = function (ctx,next){
