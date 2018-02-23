@@ -29,25 +29,23 @@ const mainHtml = (ctx, next) => {
 //   })
 // }
 
-const addBlog = function *(next) {
-  var blog = yield BlogModel.find();
-  console.log('after yield');
-  this.body = blog;
+// const getBlog = function (ctx,next){
+//     return BlogModel.find((err,blog)=>{
+//       console.log('in find');
+//       ctx.response.type = "text/plain";
+//       ctx.response.body = "err get";
+//     })
+// }
+
+const addBlog = async function (ctx, next){
+  ctx.body = 'addblog body';
 }
 
-const getBlog = function (ctx,next){
-    return BlogModel.find((err,blog)=>{
-      console.log('in find');
-      ctx.response.type = "text/plain";
-      ctx.response.body = "err get";
-    })
+const getBlog = async function (ctx, next){
+  ctx.body = 'getblog body';
 }
 
 const mainResource = serve(path.resolve(__dirname, '../client/public/'));
-
-// app.use(route.get('/',mainHtml));
-// app.use(route.get('/addBlog',addBlog));
-// app.use(route.get('/getBlog',getBlog));R
 
 router.get('/',mainHtml);
 router.get('/addBlog',addBlog);
