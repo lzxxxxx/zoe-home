@@ -20,23 +20,16 @@ const addBlog = function (ctx, next){
     content: 'content1'
   };
   let blog = new BlogModel(newBlog);
-  return blog.save().then(function(err,data){
-    if(err){
-      console.error(err)
-      return ;
-    }
+  return blog.save().then(function(){
     ctx.response.type = "text/plain";
-    ctx.response.body = 'err';
+    ctx.response.body = "err";
     next();
   })
 }
 
 const getBlog = function (ctx,next){
-    BlogModel.find((err,blog)=>{
-      if(err){
-        console.error(err)
-        return ;
-      }
+    console.log('===find',BlogModel.find());  
+    return BlogModel.find((err,blog)=>{
       console.log('in find');
       ctx.response.type = "text/plain";
       ctx.response.body = "err";
