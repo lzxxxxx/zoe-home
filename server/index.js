@@ -8,6 +8,7 @@ const router = new Router();
 const BlogModel = require('./models/blog');
 
 const mainHtml = (ctx, next) => {
+  console.log('fasdsf');
   ctx.response.type = 'html';
   ctx.response.body = fs.createReadStream(path.resolve(__dirname,'../client/public/page1.html'));
 }
@@ -42,9 +43,9 @@ const mainResource = serve(path.resolve(__dirname, '../client/public/'));
 // app.use(route.get('/addBlog',addBlog));
 // app.use(route.get('/getBlog',getBlog));R
 
-router.use('/',mainHtml);
-router.use('/addBlog',addBlog);
-router.use('/getBlog',getBlog);
+router.get('/',mainHtml);
+router.get('/addBlog',addBlog);
+router.get('/getBlog',getBlog);
 app.use(router.routes()).use(router.allowedMethods());
 
 app.use(mainResource);//静态文件路由，结合 public/resource/js 文件可理解
