@@ -21,9 +21,9 @@ const addBlog = function (ctx, next){
   };
   let blog = new BlogModel(newBlog);
   console.log('dfadfasdf',blog.save());
-  return blog.save().then(function(){
+  return blog.save().then(function(err,data){
     ctx.response.type = "text/plain";
-    ctx.response.body = "err";
+    ctx.response.body = JSON.stringify(data);
     next();
   })
 }
