@@ -3,7 +3,8 @@ const app = new Koa();
 const fs = require('fs');
 const path = require('path');
 const serve = require('koa-static');
-const route = require('koa-router');
+const Router = require('koa-router');
+const router = new Router();
 const BlogModel = require('./models/blog');
 
 const mainHtml = (ctx, next) => {
@@ -37,9 +38,14 @@ const getBlog = function (ctx,next){
 
 const mainResource = serve(path.resolve(__dirname, '../client/public/'));
 
-app.use(route.get('/',mainHtml));
-app.use(route.get('/addBlog',addBlog));
-app.use(route.get('/getBlog',getBlog));
+// app.use(route.get('/',mainHtml));
+// app.use(route.get('/addBlog',addBlog));
+// app.use(route.get('/getBlog',getBlog));R
+
+router.use('/',mainHtml);
+router.use('/addBlog',addBlog);
+router.use('/getBlog',getBlog);
+app.use(router.routes()).use(router.allowedMethods());
 
 app.use(mainResource);//静态文件路由，结合 public/resource/js 文件可理解
 app.listen(9999,'0.0.0.0');
