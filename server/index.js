@@ -26,7 +26,7 @@ const addBlog = function (ctx, next){
       return ;
     }
     ctx.response.type = "text/plain";
-    ctx.response.body = JSON.stringify(data);
+    ctx.response.body = 'err';
     next();
   })
 }
