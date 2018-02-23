@@ -46,36 +46,7 @@ const mainHtml = (ctx, next) => {
   ctx.response.body = fs.createReadStream(path.resolve(__dirname,'../client/public/page1.html'));
 }
 
-// const addBlog = function (ctx, next){
-//   let newBlog = {
-//     time: Date.now(),
-//     title: 'title1',
-//     desc: 'desc1',
-//     content: 'content1'
-//   };
-//   let blog = new BlogModel(newBlog);
-//   console.log('dfadfasdf',blog.save());
-//   return blog.save().then(function(err,data){
-//     console.log(data);
-//     ctx.response.type = "text/plain";
-//     ctx.response.body = "err addblog";
-//     next();
-//   })
-// }
-
-// const getBlog = function (ctx,next){
-//     return BlogModel.find((err,blog)=>{
-//       console.log('in find');
-//       ctx.response.type = "text/plain";
-//       ctx.response.body = "err get";
-//     })
-// }
-
 const addBlog = async function (ctx, next){
-  ctx.body = 'addblog body';
-}
-
-const getBlog = async function (ctx, next){
   let newBlog = {
     time: Date.now(),
     title: 'title1',
@@ -84,6 +55,10 @@ const getBlog = async function (ctx, next){
   };
   let blog = new BlogModel(newBlog);
   ctx.body = await blog.save();
+}
+
+const getBlog = async function (ctx, next){
+  ctx.body = await BlogModel.find().exec();
 }
 
 const mainResource = serve(path.resolve(__dirname, '../client/public/'));
