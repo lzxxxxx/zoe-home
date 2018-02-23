@@ -24,7 +24,7 @@ const addBlog = function (ctx, next){
   return blog.save().then(function(err,data){
     console.log(data);
     ctx.response.type = "text/plain";
-    ctx.response.body = JSON.stringify(data);
+    ctx.response.body = "err addblog";
     next();
   })
 }
