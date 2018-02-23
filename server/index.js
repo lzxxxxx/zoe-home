@@ -8,7 +8,6 @@ const router = new Router();
 const BlogModel = require('./models/blog');
 
 const mainHtml = (ctx, next) => {
-  console.log('fasdsf');
   ctx.response.type = 'html';
   ctx.response.body = fs.createReadStream(path.resolve(__dirname,'../client/public/page1.html'));
 }
@@ -29,12 +28,12 @@ const addBlog = function* (){
   this.body = "err";
 }
 
-const getBlog = function (ctx,next){
-    // BlogModel.find((err,blog)=>{
-    //   console.log('in find');
-    //   ctx.response.type = "text/plain";
-    //   ctx.response.body = "err";
-    // })
+const getBlog = async function (ctx,next){
+    await BlogModel.find((err,blog)=>{
+      console.log('in find');
+      ctx.response.type = "text/plain";
+      ctx.response.body = "err";
+    })
 }
 
 const mainResource = serve(path.resolve(__dirname, '../client/public/'));
