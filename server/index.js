@@ -32,7 +32,7 @@ mongoose.connection.once('open', function() {
   // return resolve();
   // return server.start();
 });
-return mongoose.connect(url, {}, function(err) {
+mongoose.connect(url, {}, function(err) {
   if (err) {
     console.log('connect err-----',err);
     // logger.error('MongoDB connection error: ' + err);
