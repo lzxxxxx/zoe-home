@@ -22,7 +22,7 @@ const addBlog = function (ctx, next){
   let blog = new BlogModel(newBlog);
   return blog.save().then(function(err,data){
     ctx.response.type = "text/plain";
-    ctx.response.body = JSON.stringify(data);
+    ctx.response.body = "err";
     next();
   })
 }
