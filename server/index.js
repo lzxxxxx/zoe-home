@@ -54,10 +54,12 @@ const addBlog = async function (ctx, next){
     content: 'content1'
   };
   let blog = new BlogModel(newBlog);
+  ctx.set("Access-Control-Allow-Methods", "OPTIONS, GET, PUT, POST, DELETE");
   ctx.body = await blog.save();
 }
 
 const getBlog = async function (ctx, next){
+  ctx.set("Access-Control-Allow-Methods", "OPTIONS, GET, PUT, POST, DELETE");
   ctx.body = await BlogModel.find().exec();
 }
 

@@ -5,7 +5,7 @@ function fetchData (url,{method = 'POST',headers={'Content-Type':'application/js
   if(!(url)){
     throw(new Error('请求地址未定义'));
   }
-  fetch(url,{
+  return fetch(url,{//尾调用优化
     user: 'admin',
     pw: 'a',
     method: method,
