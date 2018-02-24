@@ -71,7 +71,7 @@ app.use(async function(ctx,next){
   console.log(ctx);
   await next();
 })
-app.use(router.routes()).use(router.allowedMethods());
+app.use(router.routes()).use(router.allowedMethods({throw: true}));
 
 app.use(mainResource);//静态文件路由，结合 public/resource/js 文件可理解
 app.listen(9999,'0.0.0.0');
