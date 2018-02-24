@@ -11,6 +11,8 @@ import 'react-mde/lib/styles/css/react-mde-textarea.css';
 import 'react-mde/lib/styles/css/react-mde-preview.css';
 import 'font-awesome/css/font-awesome.css';
 
+import 'whatwg-fetch'
+
 class Md extends React.Component {
     constructor(props) {
         super(props);
@@ -24,7 +26,10 @@ class Md extends React.Component {
     }
     handleSubmit (){
       //发请求，取出当前 this.state.reactMdeValue
-      console.log('get text',this.state.reactMdeValue.text);
+      fetch('/addBlog')
+      .then(function(res){
+        console.log(res.json());
+      })
     }
 
     render() {
