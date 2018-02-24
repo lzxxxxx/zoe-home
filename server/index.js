@@ -68,6 +68,7 @@ router.get('/addBlog',addBlog);
 router.get('/getBlog',getBlog);
 app.use(async function(ctx,next){
   ctx.set('Allow','OPTIONS, GET, PUT, POST, DELETE')
+  console.log(ctx);
   await next();
 })
 app.use(router.routes()).use(router.allowedMethods());
