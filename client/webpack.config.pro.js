@@ -49,7 +49,7 @@ const Config = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['latest','react']
+            presets: ['latest','react','stage-3']
           }
         },
         include: path.resolve(__dirname,"src")
