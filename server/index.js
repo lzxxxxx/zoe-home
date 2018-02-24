@@ -67,9 +67,7 @@ router.get('/',mainHtml);
 router.get('/addBlog',addBlog);
 router.get('/getBlog',getBlog);
 app.use(async function(ctx,next){
-  ctx.set("Access-Control-Allow-Origin", ctx.request.header.origin)
-  ctx.set("Access-Control-Allow-Methods", "OPTIONS, GET, PUT, POST, DELETE");
-  console.log(ctx);
+  ctx.set('Allow','OPTIONS, GET, PUT, POST, DELETE')
   await next();
 })
 app.use(router.routes()).use(router.allowedMethods());
