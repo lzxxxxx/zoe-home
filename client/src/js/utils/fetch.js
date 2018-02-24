@@ -1,7 +1,5 @@
 import 'whatwg-fetch'
 
-[...a] = [1,2,3];
-({...a} = {a:2,b:3})
 function fetchData (url,{method = 'POST',headers={'Content-Type':'application/json'}, ...others}={}){
   //method,headers,body,
   if(!(url)){
