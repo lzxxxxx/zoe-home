@@ -29,6 +29,7 @@ const Config = {
   entry: {
     page1: './src/js/page1.js',
     page2: './src/js/page2.js',
+    page3: './src/js/page3.js',
   },
   output: {
     path: path.resolve(__dirname,'public'),
@@ -54,7 +55,7 @@ const Config = {
         include: path.resolve(__dirname,"src")
       },
       {
-        test: /\.scss$/,
+        test: /\.(scss|css)$/,
         use: [{
           loader: 'style-loader'
         },{
@@ -62,6 +63,10 @@ const Config = {
         }, {
           loader: 'sass-loader'
         }]
+      },
+      { 
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/, 
+        loader: 'url-loader' 
       }
     ]
   },
@@ -84,7 +89,7 @@ const Config = {
       // ( 公共chunk(commnons chunk) 的名称)
       minChunks: 2,
       // (模块必须被2个 入口chunk 共享)
-      chunks: ["page1", "page2"],
+      chunks: ["page1", "page2", "page3"],
       // (只使用这些 入口chunk)
     })
   ]
