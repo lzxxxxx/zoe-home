@@ -54,8 +54,10 @@ const addBlog = async function (ctx, next){
     content: 'content1'
   };
   let blog = new BlogModel(newBlog);
+  console.log(ctx.request.header.origin);
   ctx.set("Access-Control-Allow-Origin", ctx.request.header.origin)
   ctx.set("Access-Control-Allow-Methods", "OPTIONS, GET, PUT, POST, DELETE");
+  console.log(ctx);
   ctx.body = await blog.save();
 }
 
