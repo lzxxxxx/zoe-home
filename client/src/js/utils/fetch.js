@@ -5,6 +5,13 @@ function fetchData (url,{method = 'GET',headers={'Content-Type':'application/jso
   if(!(url)){
     throw(new Error('请求地址未定义'));
   }
+  fetch(url,{//尾调用优化
+    method: method,
+    headers: headers,
+    ...others
+  }).then(function(res){
+    alert(JSON.stringify(res));
+  })
   return fetch(url,{//尾调用优化
     method: method,
     headers: headers,

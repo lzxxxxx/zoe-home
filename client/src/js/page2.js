@@ -68,11 +68,10 @@ class List extends React.Component {
   componentWillMount (){
     fetchData('/getBlog')
     .then(function(res){
-      alert('in then');
       alert(JSON.stringify(res));
     });
-    let res = fetchData('/getBlog');
-    alert(JSON.stringify(res)+'====');
+    // let res = fetchData('/getBlog');
+    // alert(JSON.stringify(res)+'====');
   }
   render (){
     return listData.map((item, idx)=>{
