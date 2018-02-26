@@ -64,7 +64,10 @@ class ListItem extends React.Component {
 
 class List extends React.Component {
   constructor (props){
-    super(props)
+    super(props);
+    this.state = {
+      listData: [],
+    }
   }
   async componentWillMount (){
     let res = await fetchData('/getBlog');
