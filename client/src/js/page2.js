@@ -35,32 +35,32 @@ class ListItem extends React.Component {
   }
 }
 
-const listData = [
-  {
-    title: '博客搭建总结',
-    time: '2018年2月12日',
-    tags: '技术积累',
-    content: '这是一篇占坑博客。等真搭建完了，再让我详细说……'
-  },
-  {
-    title: '博客搭建总结',
-    time: '2018年2月12日',
-    tags: '技术积累',
-    content: '这是一篇占坑博客。等真搭建完了，再让我详细说……'
-  },
-  {
-    title: '博客搭建总结',
-    time: '2018年2月12日',
-    tags: '技术积累',
-    content: '这是一篇占坑博客。等真搭建完了，再让我详细说……'
-  },
-  {
-    title: '博客搭建总结',
-    time: '2018年2月12日',
-    tags: '技术积累',
-    content: '这是一篇占坑博客。等真搭建完了，再让我详细说……'
-  },
-]
+// const listData = [
+//   {
+//     title: '博客搭建总结',
+//     time: '2018年2月12日',
+//     tags: '技术积累',
+//     content: '这是一篇占坑博客。等真搭建完了，再让我详细说……'
+//   },
+//   {
+//     title: '博客搭建总结',
+//     time: '2018年2月12日',
+//     tags: '技术积累',
+//     content: '这是一篇占坑博客。等真搭建完了，再让我详细说……'
+//   },
+//   {
+//     title: '博客搭建总结',
+//     time: '2018年2月12日',
+//     tags: '技术积累',
+//     content: '这是一篇占坑博客。等真搭建完了，再让我详细说……'
+//   },
+//   {
+//     title: '博客搭建总结',
+//     time: '2018年2月12日',
+//     tags: '技术积累',
+//     content: '这是一篇占坑博客。等真搭建完了，再让我详细说……'
+//   },
+// ]
 
 class List extends React.Component {
   constructor (props){
@@ -68,10 +68,10 @@ class List extends React.Component {
   }
   async componentWillMount (){
     let res = await fetchData('/getBlog');
-    alert(JSON.stringify(res)+'====');
+    this.setState({listData: res});
   }
   render (){
-    return listData.map((item, idx)=>{
+    return this.state.listData.map((item, idx)=>{
       return (
         <ListItem prop={item} key={idx}/>
       )
