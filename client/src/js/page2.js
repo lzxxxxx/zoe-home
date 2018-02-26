@@ -65,8 +65,8 @@ class List extends React.Component {
   constructor (props){
     super(props)
   }
-  componentWillMount (){
-    let res = fetchData('/getBlog');
+  async componentWillMount (){
+    let res = await fetchData('/getBlog');
     alert(JSON.stringify(res)+'====');
   }
   render (){
