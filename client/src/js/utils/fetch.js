@@ -9,7 +9,7 @@ function fetchData (url,{method = 'POST',headers={'Content-Type':'application/js
     user: 'admin',
     pw: 'a',
     method: method,
-    headers: headers,
+    // headers: headers,
     ...others
   })
 }
