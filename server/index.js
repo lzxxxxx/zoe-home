@@ -47,6 +47,7 @@ const mainHtml = (ctx, next) => {
 }
 
 const addBlog = async function (ctx, next){
+  console.log(ctx.request);
   let newBlog = {
     time: Date.now(),
     title: 'title1',
@@ -69,7 +70,6 @@ router.post('/addBlog',addBlog);
 router.get('/getBlog',getBlog);
 app.use(async function(ctx,next){
   ctx.set('Allow','OPTIONS, GET, PUT, POST, DELETE')
-  // console.log(ctx);
   await next();
 })
 app.use(router.routes()).use(router.allowedMethods());
