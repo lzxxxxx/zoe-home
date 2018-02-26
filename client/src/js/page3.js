@@ -31,7 +31,7 @@ class Md extends React.Component {
         body: JSON.stringify({
           title: '这是一个测试博',
           desc: '这是测试博的描述',
-          content: this.state.reactMdeValue
+          content: this.state.reactMdeValue.text
         })
       })
       .then(function(res){

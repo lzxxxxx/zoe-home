@@ -48,14 +48,9 @@ const mainHtml = (ctx, next) => {
 }
 
 const addBlog = async function (ctx, next){
-  console.log(ctx.request.body);
-  let newBlog = {
-    time: Date.now(),
-    title: 'title1',
-    desc: 'desc1',
-    content: 'content1'
-  };
-  //获取到实例，实例化文档，存入数据库
+    //获取到实例，实例化文档，存入数据库
+    //后期这里要加一层校验，这个可以看看别的系统怎么做的，其实更好的方式我觉得应该是在存入数据库的钩子里加，这样不用给每个请求都写
+  let newBlog = {...ctx.request.body,time: Date.now()};
   let blog = new BlogModel(newBlog);
   ctx.body = await blog.save();
 }
