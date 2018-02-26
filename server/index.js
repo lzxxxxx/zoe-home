@@ -56,7 +56,7 @@ const addBlog = async function (ctx, next){
 }
 
 const getBlog = async function (ctx, next){
-  ctx.body = await BlogModel.find().exec();
+  ctx.body = await BlogModel.find().select('time title desc content _id').exec();
 }
 
 const mainResource = serve(path.resolve(__dirname, '../client/public/'));
