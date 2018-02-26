@@ -54,7 +54,6 @@ const addBlog = async function (ctx, next){
     content: 'content1'
   };
   let blog = new BlogModel(newBlog);
-  // ctx.set('Allow','OPTIONS, GET, PUT, POST, DELETE')
   console.log(ctx);
   ctx.body = await blog.save();
 }
@@ -66,7 +65,7 @@ const getBlog = async function (ctx, next){
 const mainResource = serve(path.resolve(__dirname, '../client/public/'));
 
 router.get('/',mainHtml);
-router.get('/addBlog',addBlog);
+router.post('/addBlog',addBlog);
 router.get('/getBlog',getBlog);
 app.use(async function(ctx,next){
   ctx.set('Allow','OPTIONS, GET, PUT, POST, DELETE')
