@@ -1,7 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 import ReactMde, { ReactMdeCommands } from 'react-mde';
-
+import "babel-polyfill";
 import '../css/aside.scss';
 import '../css/write.scss';
 import 'react-mde/lib/styles/css/react-mde-all.css';
