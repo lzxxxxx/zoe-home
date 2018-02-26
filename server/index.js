@@ -47,8 +47,7 @@ const mainHtml = (ctx, next) => {
 }
 
 const addBlog = async function (ctx, next){
-  console.log(ctx.req);
-  console.log(ctx.is('application/json'));
+  console.log(ctx.request.body);
   let newBlog = {
     time: Date.now(),
     title: 'title1',
