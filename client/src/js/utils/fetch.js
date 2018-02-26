@@ -9,7 +9,7 @@ function fetchData (url,{method = 'GET',headers={'Content-Type':'application/jso
     method: method,
     headers: headers,
     ...others
-  }).then(res => res.json())
+  }).then(res => res.json()).then(res => alert(JSON.stringify(res)))
 }
 
 export default fetchData;
