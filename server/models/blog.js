@@ -8,6 +8,8 @@ const Blog = new Schema({
   content: {type:String, default: "暂无内容"},
 })
 
+Blog.set('toObject', { getters: true });
+
 Blog.virtual('time_ms').get(function () {
   return this.time.getTime();
 }).set(function(val){
