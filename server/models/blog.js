@@ -8,6 +8,12 @@ const Blog = new Schema({
   content: {type:String, default: "暂无内容"},
 })
 
+Blog.virtual('time_ms').get(function () {
+  return this.time.getTime();
+}).set(function(val){
+  this.time = v;
+});
+
 //Schema只是定义，最终要进行操作前必须用mongoose.model方法将Schema转换为Model才行
 const model = mongoose.model('Blog',Blog)
 
