@@ -72,7 +72,7 @@ class List extends React.Component {
     })
   }
   render (){
-    listData.map((item, idx)=>{
+    return listData.map((item, idx)=>{
       return (
         <ListItem prop={item} key={idx}/>
       )
