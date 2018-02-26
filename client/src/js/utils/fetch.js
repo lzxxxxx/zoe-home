@@ -6,8 +6,12 @@ function fetchData (url,{method = 'GET',headers={'Content-Type':'application/jso
     throw(new Error('请求地址未定义'));
   }
   return fetch(url,{//尾调用优化
-    user: 'admin',
-    pw: 'a',
+    body: JSON.stringify(
+      {
+        user: 'admin',
+        pw: 'a',
+      }
+    ),
     method: method,
     headers: headers,
     ...others
