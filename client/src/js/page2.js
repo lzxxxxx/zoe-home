@@ -3,7 +3,7 @@ import {render} from 'react-dom';
 
 import '../css/aside.scss';
 import '../css/listitem.scss'
-
+import fetchData from './utils/fetch.js';
 
 class ListItem extends React.Component {
   constructor (props){
@@ -61,10 +61,25 @@ const listData = [
   },
 ]
 
-render(listData.map((item, idx)=>{
-  return (
-    <ListItem prop={item} key={idx}/>
-  )
-}) , document.querySelector('.main'))
+class List extends React.Component {
+  constructor (props){
+    super(props)
+  }
+  componentWillMount (){
+    fetchData('/getBlog')
+    .then(function(res){
+      console.log(res.json());
+    })
+  }
+  render (){
+    listData.map((item, idx)=>{
+      return (
+        <ListItem prop={item} key={idx}/>
+      )
+    })
+  }
+}
+
+render( <List />, document.querySelector('.main'))
 
 
