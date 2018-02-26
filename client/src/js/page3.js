@@ -28,11 +28,11 @@ class Md extends React.Component {
       //发请求，取出当前 this.state.reactMdeValue
       
       fetchData('/addBlog',{
-        body: {
+        body: JSON.stringify({
           title: '这是一个测试博',
           desc: '这是测试博的描述',
           content: this.state.reactMdeValue
-        }
+        })
       })
       .then(function(res){
         console.log(res.json());
