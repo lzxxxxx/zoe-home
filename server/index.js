@@ -54,6 +54,7 @@ const addBlog = async function (ctx, next){
     content: 'content1'
   };
   let blog = new BlogModel(newBlog);
+  console.log(ctx);
   ctx.body = await blog.save();
 }
 
@@ -68,7 +69,7 @@ router.get('/addBlog',addBlog);
 router.get('/getBlog',getBlog);
 app.use(async function(ctx,next){
   ctx.set('Allow','OPTIONS, GET, PUT, POST, DELETE')
-  console.log(ctx);
+  // console.log(ctx);
   await next();
 })
 app.use(router.routes()).use(router.allowedMethods());
