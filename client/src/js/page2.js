@@ -71,7 +71,7 @@ class List extends React.Component {
     this.setState({listData: res});
   }
   render (){
-    return this.state.listData.map((item, idx)=>{
+    return this.state.listData && this.state.listData.map((item, idx)=>{
       return (
         <ListItem prop={item} key={idx}/>
       )
