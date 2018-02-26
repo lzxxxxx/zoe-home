@@ -1,4 +1,5 @@
 const Koa = require('koa');
+const bodyParser = require('koa-bodyparser');
 const app = new Koa();
 const fs = require('fs');
 const path = require('path');
@@ -72,6 +73,7 @@ app.use(async function(ctx,next){
   ctx.set('Allow','OPTIONS, GET, PUT, POST, DELETE')
   await next();
 })
+app.use(bodyParser())
 app.use(router.routes()).use(router.allowedMethods());
 
 app.use(mainResource);//静态文件路由，结合 public/resource/js 文件可理解
