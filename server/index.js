@@ -53,8 +53,8 @@ const addBlog = async function (ctx, next){
     desc: 'desc1',
     content: 'content1'
   };
+  //获取到实例，实例化文档，存入数据库
   let blog = new BlogModel(newBlog);
-  console.log(ctx);
   ctx.body = await blog.save();
 }
 
