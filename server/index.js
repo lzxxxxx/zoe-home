@@ -54,8 +54,8 @@ const addBlog = async function (ctx, next){
     content: 'content1'
   };
   let blog = new BlogModel(newBlog);
+  ctx.set('Allow','OPTIONS, GET, PUT, POST, DELETE')
   console.log(ctx);
-  ctx.set('Allow','POST,GET,OPTIONS');
   ctx.body = await blog.save();
 }
 
