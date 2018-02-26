@@ -11,7 +11,7 @@ const Blog = new Schema({
 Blog.virtual('time_ms').get(function () {
   return this.time.getTime();
 }).set(function(val){
-  this.time = v;
+  this.time = val;
 });
 
 //Schema只是定义，最终要进行操作前必须用mongoose.model方法将Schema转换为Model才行
