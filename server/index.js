@@ -55,6 +55,7 @@ const addBlog = async function (ctx, next){
   };
   let blog = new BlogModel(newBlog);
   console.log(ctx);
+  ctx.set('Allow','POST,GET,OPTIONS');
   ctx.body = await blog.save();
 }
 
@@ -67,11 +68,11 @@ const mainResource = serve(path.resolve(__dirname, '../client/public/'));
 router.get('/',mainHtml);
 router.get('/addBlog',addBlog);
 router.get('/getBlog',getBlog);
-app.use(async function(ctx,next){
-  ctx.set('Allow','OPTIONS, GET, PUT, POST, DELETE')
-  // console.log(ctx);
-  await next();
-})
+// app.use(async function(ctx,next){
+//   ctx.set('Allow','OPTIONS, GET, PUT, POST, DELETE')
+//   // console.log(ctx);
+//   await next();
+// })
 app.use(router.routes()).use(router.allowedMethods());
 
 app.use(mainResource);//静态文件路由，结合 public/resource/js 文件可理解
