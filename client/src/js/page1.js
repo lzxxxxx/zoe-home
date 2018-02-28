@@ -8,7 +8,10 @@ import '../css/aside.scss';
 
 class Content extends React.Component {
   constructor (){
-    super()
+    super();
+    this.state = {
+      data: null
+    }
   }
   componentWillMount (){
     fetchData('/getBlogcontent',{
@@ -23,7 +26,7 @@ class Content extends React.Component {
   }
   render (){
     return (
-       <ReactMarkdown source={this.state.data.content} escapeHtml={false}/>
+       this.state.data && <ReactMarkdown source={this.state.data.content} escapeHtml={false}/>
     )
   }
 }
