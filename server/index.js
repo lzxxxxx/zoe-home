@@ -64,7 +64,6 @@ const getBlog = async function (ctx, next){
 
 const getBlogcontent = async function (ctx, next){
   let id = ctx.request.body.id;
-  console.log('get id here',id);
   let res = await BlogModel.findOne({_id: id}).select('title content desc time _id').lean().exec();
   ctx.body = JSON.stringify(res);
 }
