@@ -12,7 +12,7 @@ class Content extends React.Component {
   }
   componentWillMount (){
     fetchData('/getBlogcontent',{
-      method: 'GET',
+      method: 'POST',
       body: JSON.stringify({
         id: '5a8fc1911806075ef635f14c'
       })

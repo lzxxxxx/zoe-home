@@ -74,7 +74,7 @@ const mainResource = serve(path.resolve(__dirname, '../client/public/'));
 router.get('/',mainHtml);
 router.post('/addBlog',addBlog);
 router.get('/getBlog',getBlog);
-router.get('/getBlogcontent',getBlogcontent)
+router.post('/getBlogcontent',getBlogcontent)
 app.use(async function(ctx,next){
   ctx.set('Allow','OPTIONS, GET, PUT, POST, DELETE')
   await next();
