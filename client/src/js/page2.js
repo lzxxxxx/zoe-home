@@ -12,7 +12,7 @@ class ListItem extends React.Component {
     super(props)
   }
   linkDetail (id){
-    window.location = `/page3.html?id=${id}`
+    window.location = `/page1.html?id=${id}`
   }
   render (){
     return (
@@ -32,7 +32,7 @@ class ListItem extends React.Component {
         </div>
 
         <div className="content-contain">
-          {this.props.prop.content}
+          {this.props.prop.desc}
         </div>
       </div>
     )

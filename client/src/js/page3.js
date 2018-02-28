@@ -30,8 +30,8 @@ class Md extends React.Component {
       fetchData('/addBlog',{
         method: 'POST',
         body: JSON.stringify({
-          title: '这是一个测试博',
-          desc: '这是测试博的描述',
+          title: '标题后期加',
+          desc: '描述后期加',
           content: this.state.reactMdeValue.text
         })
       })

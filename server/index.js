@@ -56,9 +56,16 @@ const addBlog = async function (ctx, next){
 }
 
 const getBlog = async function (ctx, next){
-  let res = await BlogModel.find().select('time title desc content _id').lean().exec();
+  let res = await BlogModel.find().select('time title desc _id').lean().exec();
   //在这里转换 ISODate 和时间戳
   res.length ? (res = res.map(item=>{item.time && (item.time = item.time.getTime());return item;})) : res.time = res.time.getTime();
+  ctx.body = JSON.stringify(res);
+}
+
+const getBlogcontent = async function (ctx, next){
+  let id = ctx.request.body.id;
+  console.log('get id here',id);
+  let res = await BlogModel.findOne({_id: id}).select('title content desc time _id').lean().exec();
   ctx.body = JSON.stringify(res);
 }
 
@@ -67,6 +74,7 @@ const mainResource = serve(path.resolve(__dirname, '../client/public/'));
 router.get('/',mainHtml);
 router.post('/addBlog',addBlog);
 router.get('/getBlog',getBlog);
+router.get('/getBlogcontent',getBlogcontent)
 app.use(async function(ctx,next){
   ctx.set('Allow','OPTIONS, GET, PUT, POST, DELETE')
   await next();

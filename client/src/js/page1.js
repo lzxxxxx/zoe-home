@@ -2,8 +2,30 @@ import React from 'react';
 import {render} from 'react-dom';
 import ReactMarkdown from 'react-markdown';
 
+import fetchData from './utils/fetch.js'
+
 import '../css/aside.scss';
 
-const mdtext = "年初并不能真的决定这一年的所有，<br>所以，且行且努力~";
+class Content extends React.Component {
+  constructor (){
+    super()
+  }
+  componentWillMount (){
+    fetchData('/getBlogcontent',{
+      method: 'GET',
+      body: JSON.stringify({
+        id: '5a8fc1911806075ef635f14c'
+      })
+    })
+    .then(function(res){
+      this.setState({data: res});
+    })
+  }
+  render (){
+    return (
+       <ReactMarkdown source={this.state.data.content} escapeHtml={false}/>
+    )
+  }
+}
 
-render(<ReactMarkdown source={mdtext} escapeHtml={false}/>,document.querySelector('.main'));
+render(<Content />,document.querySelector('.main'));
