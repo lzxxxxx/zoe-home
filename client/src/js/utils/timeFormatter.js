@@ -3,6 +3,10 @@
  * @param {any} hasTime 只返回年月日还是具体到分钟
  */
 function formatTime (timestamp, hasTime=true){
+  if(!timestamp){
+    throw new Error('时间戳没传');
+    return;
+  }
   if (!timestamp.toString().length === 10||13) {
     throw new Error('时间戳位数错误');
     return;

@@ -20,7 +20,7 @@ class ListItem extends React.Component {
           </div>
           <div className="listitem-subtitle">
             <div className="time">
-              {formattime(this.props.prop.time)}
+              {this.props.prop.time&&formattime(this.props.prop.time)}
             </div>
             <div className="tags">
               {this.props.prop.tags}
