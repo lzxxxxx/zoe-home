@@ -14,10 +14,11 @@ class Content extends React.Component {
     }
   }
   componentWillMount (){
+    let id = window.location.search.split('=')[1];
     fetchData('/getBlogcontent',{
       method: 'POST',
       body: JSON.stringify({
-        id: '5a8fc1911806075ef635f14c'
+        id: id
       })
     })
     .then(function(res){
