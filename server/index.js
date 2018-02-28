@@ -44,6 +44,9 @@ mongoose.connect(url, {}, function(err) {
 
 const mainHtml = (ctx, next) => {
   ctx.response.type = 'html';
+  ctx.response.set({
+    'Cache-Control':'max-age=2592000'
+  });
   ctx.response.body = fs.createReadStream(path.resolve(__dirname,'../client/public/page1.html'));
 }
 
