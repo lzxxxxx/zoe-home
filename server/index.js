@@ -68,7 +68,7 @@ const getBlogcontent = async function (ctx, next){
   ctx.body = JSON.stringify(res);
 }
 
-const mainResource = serve(path.resolve(__dirname, '../client/public/'));
+const mainResource = serve(path.resolve(__dirname, '../client/public/'),{maxage: 2592000});
 
 router.get('/',mainHtml);
 router.post('/addBlog',addBlog);
