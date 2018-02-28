@@ -11,9 +11,12 @@ class ListItem extends React.Component {
   constructor (props){
     super(props)
   }
+  linkDetail (id){
+    window.location = `/page3.html?id=${id}`
+  }
   render (){
     return (
-      <div className="listitem-contain">
+      <div className="listitem-contain" onClick={this.linkDetail.bind(this,this.props.prop._id)}>
         <div className="title-contain">
           <div className="listitem-title">
             {this.props.prop.title}
