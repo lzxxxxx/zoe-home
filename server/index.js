@@ -52,6 +52,7 @@ const addBlog = async function (ctx, next){
     //后期这里要加一层校验，这个可以看看别的系统怎么做的，其实更好的方式我觉得应该是在存入数据库的钩子里加，这样不用给每个请求都写
   let newBlog = {...ctx.request.body,time_ms: Date.now()};
   let blog = new BlogModel(newBlog);
+  console.log('get after add',blog.time_ms);
   ctx.body = await blog.save();
 }
 
