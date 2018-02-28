@@ -13,7 +13,7 @@ function formatTime (timestamp, hasTime=true){
   }
   timestamp = (timestamp.toString()+'000').slice(0,13);
   let date = new Date(timestamp-0);
-  return hasTime ? `${date.getFullYear()}年${date.getMonth()+1}月${date.getDate()}日 ${date.getHours()}:${date.getMinutes()}` 
+  return hasTime ? `${date.getFullYear()}年${date.getMonth()+1}月${date.getDate()}日` 
   : `${date.getFullYear()}年${date.getMonth()+1}月${date.getDate()}日`
 }
 
