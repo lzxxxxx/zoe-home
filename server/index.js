@@ -52,12 +52,13 @@ const addBlog = async function (ctx, next){
     //后期这里要加一层校验，这个可以看看别的系统怎么做的，其实更好的方式我觉得应该是在存入数据库的钩子里加，这样不用给每个请求都写
   let newBlog = {...ctx.request.body,time_ms: Date.now()};
   let blog = new BlogModel(newBlog);
-  console.log('get after add',blog.time_ms);
   ctx.body = await blog.save();
 }
 
 const getBlog = async function (ctx, next){
-  ctx.body = JSON.stringify(await BlogModel.find().select('time_ms title desc content _id').lean().exec());
+  let res = await BlogModel.find().select('time_ms title desc content _id').lean().exec();
+  console.log('gettimems',res[1].time_ms);
+  ctx.body = JSON.stringify(res);
 }
 
 const mainResource = serve(path.resolve(__dirname, '../client/public/'));
