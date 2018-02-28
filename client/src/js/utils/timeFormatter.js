@@ -7,7 +7,7 @@ function formatTime (timestamp, hasTime=true){
     throw new Error('时间戳没传');
     return;
   }
-  if (!timestamp.toString().length === 10||13) {
+  if (!(timestamp.toString().length === 10 || timestamp.toString().length === 13)) {
     throw new Error('时间戳位数错误');
     return;
   }
