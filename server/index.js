@@ -47,7 +47,7 @@ const mainHtml = (ctx, next) => {
   ctx.response.set({
     'Cache-Control':'max-age=2592000'
   });
-  ctx.response.body = fs.createReadStream(path.resolve(__dirname,'../client/public/page1.html'));
+  ctx.response.body = fs.createReadStream(path.resolve(__dirname,'../client/public/page2.html'));
 }
 
 const addBlog = async function (ctx, next){
