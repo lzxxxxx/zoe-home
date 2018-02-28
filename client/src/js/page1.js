@@ -22,7 +22,7 @@ class Content extends React.Component {
     })
     .then(function(res){
       this.setState({data: res});
-    })
+    }.bind(this))
   }
   render (){
     return (
