@@ -5,6 +5,7 @@ import "babel-polyfill";
 import '../css/aside.scss';
 import '../css/listitem.scss'
 import fetchData from './utils/fetch.js';
+import formattime from './utils/timeFormatter.js'
 
 class ListItem extends React.Component {
   constructor (props){
@@ -19,7 +20,7 @@ class ListItem extends React.Component {
           </div>
           <div className="listitem-subtitle">
             <div className="time">
-              {this.props.prop.time}
+              {formattime(this.props.prop.time)}
             </div>
             <div className="tags">
               {this.props.prop.tags}
