@@ -10,7 +10,7 @@ function buildHtml (){
     if (typeof Config.entry[ent] == 'object') return ;
     let item = new HtmlWebpackPlugin({
         filename: `${ent}.html`,
-        template: './template/index.html',
+        template: './client/template/index.html',
         chunks: [`${ent}`,'chunk'],//和 entry 部分的 key 一致
         minify: {
           removeAttributeQuotes: true,
@@ -27,9 +27,7 @@ function buildHtml (){
 
 const Config = {
   entry: {
-    page1: './src/js/page1.js',
-    page2: './src/js/page2.js',
-    page3: './src/js/page3.js',
+    index: './client/index.js',
   },
   output: {
     path: path.resolve(__dirname,'public'),
@@ -52,7 +50,7 @@ const Config = {
             presets: ['latest','react','stage-3']
           }
         },
-        include: path.resolve(__dirname,"src")
+        include: path.resolve(__dirname)
       },
       {
         test: /\.(scss|css)$/,
@@ -89,7 +87,7 @@ const Config = {
       // ( 公共chunk(commnons chunk) 的名称)
       minChunks: 2,
       // (模块必须被2个 入口chunk 共享)
-      chunks: ["page1", "page2", "page3"],
+      chunks: ["index"],
       // (只使用这些 入口chunk)
     })
   ]
