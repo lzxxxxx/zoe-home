@@ -11,8 +11,8 @@ const mainHtml = (ctx, next) => {
   ctx.response.body = fs.createReadStream(path.resolve(__dirname,'../client/public/page1.html'));
 }
 
-const addBlog = function* (){
-  console.log(`${this.body} get body`);
+function* addBlog(){
+  console.log(`get body`);
   let newBlog = {
     time: Date.now(),
     title: 'title1',
