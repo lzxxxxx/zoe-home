@@ -1,0 +1,16 @@
+.article {
+  width: 800px;
+  box-sizing: border-box;
+  margin: 80px auto;
+  padding: 40px 40px;
+  background-color: rgba(255,255,255,0.7);
+  border-radius: 5px;
+  box-shadow: 2px 3px 14px 0px rgba(0, 0, 0, 0.9);
+  &>.title {
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+  &.content {
+    font-size: 20px;
+  }
+}

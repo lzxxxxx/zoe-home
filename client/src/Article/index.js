@@ -1,7 +1,20 @@
 import React from 'react';
+import './index.scss';
 
-export default class Article extends React.Component {
+class Article extends React.Component {
   render (){
-    <h1>article</h1>
+    return (
+      <div className="article">
+        <div className="title">
+          标题
+        </div>
+        <div className="content">
+          我是内容
+          特别多内容
+        </div>
+      </div>
+    )
   }
 }
+
+export default Article;

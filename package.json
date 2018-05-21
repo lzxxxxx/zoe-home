@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "zoeliu's blog",
   "scripts": {
-    "start": "webpack-dev-server --hot --inline",
-    "build": "webpack --progress --profile --colors --config webpack.config.pro.js"
+    "start": "webpack-dev-server --hot --inline --config ./client/webpack.config.js",
+    "build": "webpack --progress --profile --colors --config ./client/webpack.config.pro.js"
   },
   "repository": {
     "type": "git",
@@ -35,7 +35,6 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-markdown": "^3.1.4",
-    "react-router": "^4.2.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.1",
     "url-loader": "^0.6.2",
@@ -45,6 +44,7 @@
   "dependencies": {
     "font-awesome": "^4.7.0",
     "react-mde": "^2.3.4",
+    "react-router": "^3.2.1",
     "showdown": "^1.8.6",
     "whatwg-fetch": "^2.0.3"
   }

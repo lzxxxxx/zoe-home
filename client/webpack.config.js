@@ -63,7 +63,8 @@ const Config = {
   devServer: {
     contentBase: './dev',
     port: 8999,
-    hot: true
+    hot: true,
+    index: 'index.html'
   },
   devtool: "inline-source-map",
   plugins: [

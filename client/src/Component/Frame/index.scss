@@ -1,0 +1,14 @@
+//充当 reset 文件的角色
+.frame {
+  min-height: 100vh;
+  background: url("http://www.sj520.cn/sc/ima/20170704215219_43678.jpg");
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  overflow: hidden;
+  font-family: 'Noto Serif', serif;
+}
+
+body, html, h1, h2 {
+  padding: 0;
+  margin: 0;
+}
